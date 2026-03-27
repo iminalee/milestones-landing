@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Milestones.today App — Coming Soon</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Pretendard', sans-serif;
+      letter-spacing: -0.02em;
+      background: #0f172a;
+      color: #fff;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 32px;
+    }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    @keyframes ringExpand { 0%{transform:scale(0.9);opacity:0.5} 100%{transform:scale(1.7);opacity:0} }
+    @keyframes corePulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
+
+    .orb {
+      position: relative; width: 90px; height: 90px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 40px;
+      animation: fadeUp 0.7s ease-out both;
+    }
+    .ring {
+      position: absolute; inset: 0; border-radius: 50%;
+      border: 1.5px solid rgba(217,119,6,0.4);
+      animation: ringExpand 2.4s ease-out infinite;
+    }
+    .ring:nth-child(2) { animation-delay: 0.8s; }
+    .ring:nth-child(3) { animation-delay: 1.6s; }
+    .core {
+      width: 50px; height: 50px; border-radius: 50%;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; animation: corePulse 2s ease-in-out infinite;
+      box-shadow: 0 4px 24px rgba(217,119,6,0.3);
+    }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3);
+      border-radius: 999px; padding: 5px 14px;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #fbbf24; margin-bottom: 28px;
+      animation: fadeUp 0.7s 0.1s ease-out both;
+    }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: #fbbf24; animation: blink 1.5s infinite; }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 900; font-style: italic; text-transform: uppercase;
+      letter-spacing: -0.04em; line-height: 1.05;
+      margin-bottom: 20px;
+      animation: fadeUp 0.7s 0.2s ease-out both;
+    }
+    h1 em { color: #fbbf24; font-style: italic; }
+
+    p {
+      font-size: 0.95rem; color: #94a3b8; line-height: 1.8;
+      max-width: 440px; margin: 0 auto 40px;
+      animation: fadeUp 0.7s 0.3s ease-out both;
+    }
+
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; padding: 14px 24px;
+      font-family: inherit; font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      color: #fff; text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+      animation: fadeUp 0.7s 0.4s ease-out both;
+    }
+    .back-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(245,158,11,0.4); }
+
+    .footer-txt {
+      position: fixed; bottom: 24px;
+      font-size: 0.68rem; color: #334155; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="orb">
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="core">⚡</div>
+  </div>
+
+  <div class="badge"><span class="dot"></span> 준비 중입니다</div>
+
+  <h1>앱이 곧<br><em>열립니다.</em></h1>
+
+  <p>
+    APEX BPS 시스템을 탑재한 Milestones.today 앱은<br>
+    현재 마지막 준비 단계에 있습니다.<br>
+    얼리 액세스 신청자에게 가장 먼저 문을 엽니다.
+  </p>
+
+  <a href="/" class="back-btn">← 랜딩 페이지로 돌아가기</a>
+
+  <div class="footer-txt">© 2026 Milestones.today · Protect Your Future Self</div>
+
+</body>
+</html>

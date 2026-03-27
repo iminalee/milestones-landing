@@ -3,6 +3,7 @@
 // ================================================================
 
 const ADMIN_EMAIL = "iam.minalee@gmail.com";
+const CONTACT_EMAIL = "5milestones.today@gmail.com";
 
 // ================================================================
 // POST 요청 처리
@@ -10,6 +11,14 @@ const ADMIN_EMAIL = "iam.minalee@gmail.com";
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
+
+    // 문의 폼 처리
+    if (data.type === "contact") {
+      sendContactEmail(data.name, data.email, data.message);
+      return respond({ success: true, message: "문의 전달 완료" });
+    }
+
+    // 웨이팅 리스트 처리
     const email = data.email;
     const name = data.name || "구독자";
 
@@ -97,6 +106,23 @@ function respond(data) {
   return ContentService
     .createTextOutput(JSON.stringify(data))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+// ================================================================
+// 문의 이메일 전달
+// ================================================================
+function sendContactEmail(name, email, message) {
+  const subject = "[Milestones.today 문의] " + name + "님으로부터";
+  const body = "보낸 사람: " + name + " (" + email + ")\n\n" +
+    "──────────────────────────────\n\n" +
+    message + "\n\n" +
+    "──────────────────────────────\n" +
+    "milestones.today 문의 폼에서 자동 발송됨";
+
+  GmailApp.sendEmail(CONTACT_EMAIL, subject, body, {
+    name: "Milestones.today 문의봇",
+    replyTo: email,
+  });
 }
 
 // ================================================================
