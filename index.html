@@ -402,7 +402,8 @@
       <div class="form-wrap fade-up-5" id="form-area-hero">
         <form onsubmit="handleSubmit(event,'form-area-hero')">
           <div class="form-row">
-            <input type="email" class="email-input" placeholder="이메일 주소를 입력하세요" required autocomplete="email" />
+            <input type="text" class="email-input" name="name" placeholder="이름" required autocomplete="name" style="max-width:140px;" />
+            <input type="email" class="email-input" name="email" placeholder="이메일 주소" required autocomplete="email" />
             <button type="submit" class="submit-btn">시그널 수신</button>
           </div>
           <p class="error-msg" style="display:none;"></p>
@@ -622,7 +623,8 @@
       <div class="form-wrap fade-up-4" id="form-area-bottom">
         <form onsubmit="handleSubmit(event,'form-area-bottom')">
           <div class="form-row">
-            <input type="email" class="email-input" placeholder="이메일 주소를 입력하세요" required autocomplete="email" />
+            <input type="text" class="email-input" name="name" placeholder="이름" required autocomplete="name" style="max-width:140px;" />
+            <input type="email" class="email-input" name="email" placeholder="이메일 주소" required autocomplete="email" />
             <button type="submit" class="submit-btn">시그널 수신</button>
           </div>
           <p class="error-msg" style="display:none;"></p>
@@ -653,14 +655,15 @@
     async function handleSubmit(e, areaId) {
       e.preventDefault();
       const form = e.target;
-      const email = form.querySelector('input[type="email"]').value.trim();
+      const name = form.querySelector('input[name="name"]').value.trim();
+      const email = form.querySelector('input[name="email"]').value.trim();
       const btn = form.querySelector('.submit-btn');
       const errMsg = form.querySelector('.error-msg');
-      if (!email) return;
+      if (!name || !email) return;
       btn.disabled = true; btn.textContent = "..."; errMsg.style.display = "none";
       try {
-        await fetch(GAS_URL, { method:"POST", mode:"no-cors", headers:{"Content-Type":"application/json"}, body: JSON.stringify({email}) });
-        showSuccess(areaId, email);
+        await fetch(GAS_URL, { method:"POST", mode:"no-cors", headers:{"Content-Type":"application/json"}, body: JSON.stringify({name, email}) });
+        showSuccess(areaId, name, email);
       } catch {
         errMsg.textContent = "오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
         errMsg.style.display = "block";
@@ -668,11 +671,11 @@
       }
     }
 
-    function showSuccess(areaId, email) {
+    function showSuccess(areaId, name, email) {
       document.getElementById(areaId).innerHTML = `
         <div class="success-card">
           <div class="success-icon">✓</div>
-          <div class="success-title">시그널 수신 완료!</div>
+          <div class="success-title">${name}님, 시그널 수신 완료!</div>
           <div class="success-desc"><strong>${email}</strong>로 확인 이메일을 발송했습니다.<br>런칭 시 가장 먼저 알려드릴게요.</div>
           <a href="https://app.milestones.today" class="success-link">앱 미리보기 →</a>
         </div>`;
