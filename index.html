@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Milestones.today — 당신의 성장을 오늘 설계하세요</title>
+  <meta name="description" content="성공하는 사람들의 방식으로 목표가 아닌 마일스톤을 추적하세요. 얼리 액세스 신청." />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --amber: #d97706;
+      --amber-light: #f59e0b;
+      --amber-pale: #fef3c7;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --text-faint: #94a3b8;
+      --border: #e2e8f0;
+      --bg: #ffffff;
+      --bg-soft: #f8fafc;
+      --bg-card: #f1f5f9;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      letter-spacing: -0.02em;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── 애니메이션 ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(217,119,6,0.15); }
+      50%       { box-shadow: 0 0 0 12px rgba(217,119,6,0); }
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    .fade-up   { animation: fadeUp 0.7s ease-out both; }
+    .fade-up-2 { animation: fadeUp 0.7s ease-out 0.15s both; }
+    .fade-up-3 { animation: fadeUp 0.7s ease-out 0.3s both; }
+    .fade-up-4 { animation: fadeUp 0.7s ease-out 0.45s both; }
+    .fade-up-5 { animation: fadeUp 0.7s ease-out 0.6s both; }
+
+    /* ── 레이아웃 ── */
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── 헤더 ── */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+    }
+    header .inner {
+      max-width: 1000px; margin: 0 auto; padding: 0 24px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo { font-size: 1.25rem; font-weight: 900; font-style: italic; text-transform: uppercase; }
+    .logo span { color: var(--amber); }
+    .login-btn {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-muted);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .login-btn:hover { color: var(--text); }
+
+    /* ── 히어로 ── */
+    .hero {
+      padding: 100px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(245,158,11,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--amber-pale);
+      border: 1px solid rgba(217,119,6,0.3);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 32px;
+    }
+    .badge-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--amber-light);
+      animation: blink 1.5s ease-in-out infinite;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    h1 em { color: var(--amber); font-style: italic; }
+
+    .subtitle {
+      max-width: 520px; margin: 0 auto 48px;
+      font-size: 1rem; line-height: 1.75;
+      color: var(--text-muted);
+    }
+    .subtitle strong { color: var(--text); font-weight: 700; }
+
+    /* ── 폼 ── */
+    .form-wrap { max-width: 460px; margin: 0 auto; }
+    .form-row { display: flex; gap: 8px; }
+
+    .email-input {
+      flex: 1;
+      padding: 14px 18px;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      font-family: inherit;
+      font-size: 0.875rem;
+      color: var(--text);
+      background: var(--bg);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      letter-spacing: -0.01em;
+    }
+    .email-input::placeholder { color: var(--text-faint); }
+    .email-input:focus {
+      border-color: var(--amber);
+      box-shadow: 0 0 0 3px rgba(217,119,6,0.1);
+    }
+
+    .submit-btn {
+      padding: 14px 22px;
+      background: var(--amber);
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      font-family: inherit;
+      font-size: 0.8rem; font-weight: 900;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      cursor: pointer; white-space: nowrap;
+      transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(217,119,6,0.3);
+    }
+    .submit-btn:hover { background: #b45309; box-shadow: 0 6px 24px rgba(217,119,6,0.4); }
+    .submit-btn:active { transform: scale(0.97); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .form-note {
+      margin-top: 10px;
+      font-size: 0.7rem; color: var(--text-faint);
+      text-align: center; letter-spacing: 0.02em;
+    }
+
+    /* ── 성공 카드 ── */
+    .success-card {
+      background: var(--amber-pale);
+      border: 1.5px solid rgba(217,119,6,0.3);
+      border-radius: 20px;
+      padding: 36px 32px;
+      text-align: center;
+      animation: pulseGlow 2s ease-in-out 3;
+    }
+    .success-icon { font-size: 2.5rem; margin-bottom: 12px; }
+    .success-title { font-size: 1.1rem; font-weight: 900; color: var(--text); margin-bottom: 8px; }
+    .success-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+    .success-link {
+      display: inline-block; margin-top: 20px;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--amber); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .success-link:hover { color: #b45309; }
+
+    /* ── 에러 ── */
+    .error-msg { font-size: 0.75rem; color: #ef4444; text-align: center; margin-top: 8px; }
+
+    /* ── 피처 카드 ── */
+    .features {
+      padding: 80px 0;
+      background: var(--bg-soft);
+      border-top: 1px solid var(--border);
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 24px;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .feature-card:hover {
+      border-color: rgba(217,119,6,0.3);
+      box-shadow: 0 8px 32px rgba(217,119,6,0.08);
+      transform: translateY(-3px);
+    }
+    .feature-icon { font-size: 1.8rem; margin-bottom: 14px; }
+    .feature-title { font-size: 0.9rem; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+    .feature-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ── 섹션 타이틀 ── */
+    .section-label {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 16px;
+    }
+
+    /* ── 소셜 숫자 ── */
+    .stats {
+      display: flex; justify-content: center; gap: 48px;
+      padding: 48px 0 0;
+      flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-size: 2rem; font-weight: 900; font-style: italic;
+      color: var(--text); letter-spacing: -0.04em;
+    }
+    .stat-num span { color: var(--amber); }
+    .stat-label { font-size: 0.7rem; color: var(--text-faint); margin-top: 4px; letter-spacing: 0.04em; }
+
+    /* ── 푸터 ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--text-faint);
+    }
+
+    /* ── 반응형 ── */
+    @media (max-width: 520px) {
+      .form-row { flex-direction: column; }
+      .submit-btn { width: 100%; }
+      h1 { font-size: 2.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <header>
+    <div class="inner">
+      <div class="logo">Milestones<span>.today</span></div>
+      <a href="https://app.milestones.today" class="login-btn">로그인 →</a>
+    </div>
+  </header>
+
+  <!-- 히어로 -->
+  <section class="hero">
+    <div class="container">
+
+      <div class="badge fade-up">
+        <span class="badge-dot"></span>
+        Early Access — Coming Soon
+      </div>
+
+      <h1 class="fade-up-2">
+        당신의 마일스톤을<br>
+        <em>오늘 설계하세요.</em>
+      </h1>
+
+      <p class="subtitle fade-up-3">
+        성공하는 사람들의 공통점 — 목표가 아닌 <strong>마일스톤</strong>을 추적합니다.<br>
+        Milestones.today는 당신의 성장을 매일 측정하고 시각화합니다.
+      </p>
+
+      <!-- 이메일 폼 -->
+      <div class="form-wrap fade-up-4" id="form-area">
+        <form id="waitlist-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <input
+              id="email-input"
+              type="email"
+              class="email-input"
+              placeholder="이메일 주소를 입력하세요"
+              required
+              autocomplete="email"
+            />
+            <button type="submit" class="submit-btn" id="submit-btn">
+              얼리 액세스
+            </button>
+          </div>
+          <p id="error-msg" class="error-msg" style="display:none;"></p>
+          <p class="form-note">스팸 없음 · 런칭 알림만 발송합니다</p>
+        </form>
+      </div>
+
+      <!-- 통계 -->
+      <div class="stats fade-up-5">
+        <div class="stat-item">
+          <div class="stat-num">0<span>+</span></div>
+          <div class="stat-label">웨이팅 리스트</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">2026<span>.</span>Q2</div>
+          <div class="stat-label">예상 런칭</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100<span>%</span></div>
+          <div class="stat-label">무료로 시작</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 피처 -->
+  <section class="features">
+    <div class="container">
+      <p class="section-label" style="text-align:center;">What's inside</p>
+      <div class="features-grid">
+        <div class="feature-card fade-up">
+          <div class="feature-icon">🎯</div>
+          <div class="feature-title">마일스톤 추적</div>
+          <div class="feature-desc">큰 목표를 달성 가능한 작은 마일스톤으로 분해합니다. 진척도가 보이면 동기가 유지됩니다.</div>
+        </div>
+        <div class="feature-card fade-up-2">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-title">데일리 펄스</div>
+          <div class="feature-desc">매일의 에너지, 집중도, 진척도를 10초 안에 기록합니다. 패턴이 쌓이면 통찰이 생깁니다.</div>
+        </div>
+        <div class="feature-card fade-up-3">
+          <div class="feature-icon">🧠</div>
+          <div class="feature-title">BPS 시스템</div>
+          <div class="feature-desc">미래의 베스트 버전을 현재로 끌어당기는 신경과학 기반 자기 설계 프레임워크입니다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer>
+    <p>© 2026 Milestones.today · All rights reserved</p>
+  </footer>
+
+  <script>
+    // ⚠️ Google Apps Script 배포 후 아래 URL을 교체하세요
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbwaCwYJv2TWrXmgIjwHzyv6-3VT7ggnD3E-v7ILJyWx3f9abFsJzPZhPZiu4m7BKH_F/exec";
+
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById("email-input").value.trim();
+      const btn = document.getElementById("submit-btn");
+      const errMsg = document.getElementById("error-msg");
+
+      if (!email) return;
+
+      btn.disabled = true;
+      btn.textContent = "...";
+      errMsg.style.display = "none";
+
+      try {
+        await fetch(GAS_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
+
+        // no-cors 는 응답 확인 불가이므로 성공으로 처리
+        showSuccess(email);
+      } catch (err) {
+        errMsg.textContent = "오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
+        errMsg.style.display = "block";
+        btn.disabled = false;
+        btn.textContent = "얼리 액세스";
+      }
+    }
+
+    function showSuccess(email) {
+      const area = document.getElementById("form-area");
+      area.innerHTML = `
+        <div class="success-card">
+          <div class="success-icon">✓</div>
+          <div class="success-title">등록 완료!</div>
+          <div class="success-desc">
+            <strong>${email}</strong>로 초대장을 보내드렸습니다.<br>
+            런칭 시 가장 먼저 알려드릴게요.
+          </div>
+          <a href="https://app.milestones.today" class="success-link">앱 미리보기 →</a>
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
