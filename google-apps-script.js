@@ -80,7 +80,8 @@ function sendWelcomeEmail(name, email) {
     "그 질문에 답하는 순간, 역방향 진화가 시작됩니다.\n\n" +
     "— APEX BPS 팀 드림\n\n" +
     "──────────────────────────────\n" +
-    "이 이메일은 milestones.today 웨이팅 리스트 신청으로 발송되었습니다.";
+    "이 이메일은 milestones.today 웨이팅 리스트 신청으로 발송되었습니다.\n" +
+    "더 이상 수신을 원하지 않으신다면 iam.minalee@gmail.com 으로 '수신거부'라고 보내주세요.";
 
   GmailApp.sendEmail(email, subject, body, {
     name: "APEX BPS · Milestones.today",
