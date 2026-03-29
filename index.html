@@ -136,27 +136,30 @@
       font-size: 1.15rem; color: var(--text-muted); margin: 20px auto 32px;
       max-width: 520px; line-height: 1.75; font-weight: 400;
     }
-    .feature-card-header {
-      display: flex; align-items: center; gap: 18px; margin-bottom: 20px;
+    .feature-num {
+      font-size: 0.58rem; font-weight: 700; color: var(--text-faint);
+      letter-spacing: 0.14em; margin-bottom: 10px;
+    }
+    .feature-kw-row {
+      display: flex; align-items: flex-end; gap: 12px; margin-bottom: 18px;
+    }
+    .feature-keyword {
+      font-size: clamp(1.9rem, 3.5vw, 2.5rem); font-weight: 900; font-style: italic;
+      color: var(--amber); letter-spacing: -0.04em; line-height: 1;
     }
     .feature-hanja-wrap {
-      flex-shrink: 0; display: flex; flex-direction: column; align-items: center;
+      display: flex; flex-direction: column; align-items: center; padding-bottom: 4px;
     }
     .feature-hanja {
-      font-size: 2.8rem; font-weight: 900; color: var(--amber);
-      line-height: 1; font-style: normal; letter-spacing: 0;
+      font-size: 1.15rem; font-weight: 900;
+      color: rgba(217,119,6,0.38); line-height: 1;
     }
     .feature-hanja-meaning {
-      font-size: 0.5rem; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--text-faint);
-      margin-top: 5px; display: block; text-align: center;
+      font-size: 0.46rem; font-weight: 700; letter-spacing: 0.15em;
+      color: var(--text-faint); margin-top: 4px; display: block;
     }
-    .feature-card-meta {
-      display: flex; flex-direction: column; justify-content: center; gap: 5px;
-    }
-    .feature-num {
-      font-size: 0.62rem; font-weight: 800; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--amber);
+    .feature-divider {
+      height: 1px; background: var(--border); margin-bottom: 16px;
     }
     .beta-link {
       text-align: center; margin-top: 20px;
@@ -699,81 +702,81 @@
       <div class="section-title fade-up-2">6개의 도구,<br><em>하나의 방향.</em></div>
       <div class="features-grid">
         <div class="feature-card fade-up">
-          <div class="feature-card-header">
+          <div class="feature-num">01</div>
+          <div class="feature-kw-row">
+            <span class="feature-keyword">FEEL</span>
             <div class="feature-hanja-wrap">
               <div class="feature-hanja">感</div>
               <span class="feature-hanja-meaning">감</span>
             </div>
-            <div class="feature-card-meta">
-              <div class="feature-num">01 · SENSE</div>
-              <div class="feature-title">나는 어떤 방식으로 배우는가</div>
-            </div>
           </div>
+          <div class="feature-divider"></div>
+          <div class="feature-title">나는 어떤 방식으로 배우는가</div>
           <div class="feature-desc">보는 것에 반응하는지, 듣는 것인지, 직접 해봐야 하는지. 내 방식을 알면 모든 게 쉬워집니다.</div>
         </div>
         <div class="feature-card fade-up-2">
-          <div class="feature-card-header">
+          <div class="feature-num">02</div>
+          <div class="feature-kw-row">
+            <span class="feature-keyword">KNOW</span>
             <div class="feature-hanja-wrap">
               <div class="feature-hanja">性</div>
               <span class="feature-hanja-meaning">성</span>
             </div>
-            <div class="feature-card-meta">
-              <div class="feature-num">02 · CORE</div>
-              <div class="feature-title">내 성격의 본성</div>
-            </div>
           </div>
+          <div class="feature-divider"></div>
+          <div class="feature-title">내 성격의 본성</div>
           <div class="feature-desc">왜 나는 이런 패턴을 반복하는지, 과학적으로 이해하는 지도입니다.</div>
         </div>
         <div class="feature-card fade-up-3">
-          <div class="feature-card-header">
+          <div class="feature-num">03</div>
+          <div class="feature-kw-row">
+            <span class="feature-keyword">WANT</span>
             <div class="feature-hanja-wrap">
               <div class="feature-hanja">望</div>
               <span class="feature-hanja-meaning">망</span>
             </div>
-            <div class="feature-card-meta">
-              <div class="feature-num">03 · STAGE</div>
-              <div class="feature-title">지금 내게 진짜 필요한 것</div>
-            </div>
           </div>
+          <div class="feature-divider"></div>
+          <div class="feature-title">지금 내게 진짜 필요한 것</div>
           <div class="feature-desc">안정인지, 소속감인지, 성취인지. 단계를 알면 방향이 생깁니다.</div>
         </div>
         <div class="feature-card fade-up">
-          <div class="feature-card-header">
+          <div class="feature-num">04</div>
+          <div class="feature-kw-row">
+            <span class="feature-keyword">BIND</span>
             <div class="feature-hanja-wrap">
               <div class="feature-hanja">結</div>
               <span class="feature-hanja-meaning">결</span>
             </div>
-            <div class="feature-card-meta">
-              <div class="feature-num">04 · CONTRACT</div>
-              <div class="feature-title">나와의 약속, 계약으로</div>
-            </div>
           </div>
+          <div class="feature-divider"></div>
+          <div class="feature-title">나와의 약속, 계약으로</div>
           <div class="feature-desc">다짐은 약해집니다. 계약은 남습니다. 미래의 나와 오늘의 내가 서명하는 구조입니다.</div>
         </div>
         <div class="feature-card fade-up-2">
-          <div class="feature-card-header">
+          <div class="feature-num">05</div>
+          <div class="feature-kw-row">
+            <span class="feature-keyword">BUILD</span>
             <div class="feature-hanja-wrap">
               <div class="feature-hanja">蓄</div>
               <span class="feature-hanja-meaning">축</span>
             </div>
-            <div class="feature-card-meta">
-              <div class="feature-num">05 · BANK</div>
-              <div class="feature-title">마음 통장</div>
-            </div>
           </div>
+          <div class="feature-divider"></div>
+          <div class="feature-title">마음 통장</div>
           <div class="feature-desc">작은 실천을 매일 적립합니다. 눈에 보이지 않던 성장이 숫자로 쌓입니다.</div>
         </div>
         <div class="feature-card fade-up-3">
-          <div class="feature-card-header">
+          <div class="feature-num">06</div>
+          <div class="feature-kw-row">
+            <span class="feature-keyword">BE</span>
             <div class="feature-hanja-wrap">
               <div class="feature-hanja">我</div>
               <span class="feature-hanja-meaning">아</span>
             </div>
-            <div class="feature-card-meta">
-              <div class="feature-num">06 · APEX</div>
-              <div class="feature-title">미래의 나, 설계하기</div>
-            </div>
           </div>
+          <div class="feature-divider"></div>
+          <div class="feature-title">미래의 나, 설계하기</div>
           <div class="feature-desc">이름, 하루 루틴, 말투까지. 막연한 꿈이 아닌 구체적인 사람으로 만듭니다.</div>
         </div>
       </div>
