@@ -350,21 +350,24 @@
 
     /* ── 앱 미리보기 ── */
     .preview-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      column-count: 3;
+      column-gap: 14px;
     }
     .preview-item {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px; overflow: hidden;
-      transition: border-color 0.2s, transform 0.2s;
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 14px;
+      border: 1.5px solid #f59e0b;
+      border-radius: 16px; overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
     }
-    .preview-item:hover { border-color: rgba(245,158,11,0.3); transform: translateY(-4px); }
+    .preview-item:hover { border-color: #fbbf24; transform: translateY(-3px); }
     .preview-label {
       font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em;
       text-transform: uppercase; color: #fbbf24;
-      padding: 12px 16px 8px;
+      padding: 10px 14px 8px;
     }
     .preview-img {
       width: 100%; display: block;
@@ -447,7 +450,7 @@
 
     /* ── 반응형 ── */
     @media (max-width: 900px) {
-      .preview-grid { grid-template-columns: repeat(2, 1fr); }
+      .preview-grid { column-count: 2; }
     }
     @media (max-width: 640px) {
       .form-row { flex-direction: column; }
@@ -457,7 +460,7 @@
       .step { padding-bottom: 40px; }
       .footer-inner { flex-direction: column; text-align: center; }
       .nav-links { gap: 16px; }
-      .preview-grid { grid-template-columns: 1fr; gap: 12px; }
+      .preview-grid { column-count: 1; }
       .story-wrap { grid-template-columns: 1fr; gap: 36px; }
     }
   </style>
