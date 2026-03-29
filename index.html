@@ -171,11 +171,6 @@
       color: var(--text); margin-bottom: 28px;
     }
     h1 em { color: var(--amber); font-style: italic; }
-    h1 .line-sub {
-      display: block; font-size: clamp(1.4rem, 3.5vw, 2.8rem);
-      font-weight: 700; color: var(--text-muted); margin-top: 8px;
-    }
-
     .hero-oneliner {
       display: inline-block;
       font-size: 0.9rem; font-weight: 600; color: var(--text-muted);
@@ -183,12 +178,6 @@
       border-radius: 999px; padding: 8px 20px;
       margin-bottom: 28px; letter-spacing: -0.01em;
     }
-    .hero-sub {
-      max-width: 560px; margin: 0 auto 48px;
-      font-size: 1rem; line-height: 1.8; color: var(--text-muted);
-    }
-    .hero-sub strong { color: var(--text); font-weight: 700; }
-
     /* 배지 */
     .badge {
       display: inline-flex; align-items: center; gap: 8px;
@@ -299,13 +288,6 @@
     .wv-num { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; color: #fbbf24; margin-bottom: 16px; }
     .wv-title { font-size: 1.1rem; font-weight: 900; font-style: italic; text-transform: uppercase; color: #fff; margin-bottom: 12px; letter-spacing: -0.02em; }
     .wv-desc { font-size: 0.82rem; color: #94a3b8; line-height: 1.75; }
-    .wv-tag {
-      display: inline-block; margin-top: 18px;
-      background: rgba(245,158,11,0.15); color: #fbbf24;
-      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; padding: 4px 12px; border-radius: 999px;
-    }
-
     /* ── 문제 섹션 ── */
     .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 48px; }
     .problem-card {
@@ -354,10 +336,8 @@
 
     /* ── 인용구 ── */
     .quote-inner { max-width: 720px; margin: 0 auto; text-align: center; }
-    .quote-mark { font-size: 5rem; font-weight: 900; font-style: italic; color: rgba(245,158,11,0.2); line-height: 0.6; margin-bottom: 24px; }
-    .quote-text { font-size: clamp(1.3rem, 3vw, 2.2rem); font-weight: 900; font-style: italic; letter-spacing: -0.03em; line-height: 1.3; color: #fff; margin-bottom: 20px; }
+    .quote-text { font-size: clamp(1.3rem, 3vw, 2.2rem); font-weight: 900; font-style: italic; letter-spacing: -0.03em; line-height: 1.3; color: #fff; }
     .quote-text em { color: #fbbf24; }
-    .quote-author { font-size: 0.72rem; color: #64748b; letter-spacing: 0.1em; text-transform: uppercase; }
 
     /* ── FAQ ── */
     .faq-list { margin-top: 48px; max-width: 680px; margin-left: auto; margin-right: auto; }
@@ -745,8 +725,8 @@
           <div class="feature-desc">왜 나는 이런 패턴을 반복하는지,<br>과학적으로 이해하는 지도입니다.</div>
         </div>
         <div class="feature-card fade-up-3">
-          <div class="feature-hanja">約</div>
-          <span class="feature-hanja-meaning">약속</span>
+          <div class="feature-hanja">契</div>
+          <span class="feature-hanja-meaning">계약</span>
           <div class="feature-num">06 · CONTRACT</div>
           <div class="feature-title">나와의 약속, 계약으로</div>
           <div class="feature-desc">다짐은 약해집니다. 계약은 남습니다.<br>미래의 나와 오늘의 내가 서명하는 구조입니다.</div>
