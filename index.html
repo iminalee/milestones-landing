@@ -433,9 +433,10 @@
 
     /* ── 앱 미리보기 듀오 ── */
     .preview-duo {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 20px; max-width: 720px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px; max-width: 1020px; margin: 0 auto;
     }
+    @media (max-width: 900px) { .preview-duo { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 640px) { .preview-duo { grid-template-columns: 1fr; } }
 
     /* ── 다크 feature-card ── */
@@ -679,7 +680,7 @@
           </p>
           <p class="story-text">
             변화는 일어납니다.<br>
-            그런데 혼자 남겨지면, 다시 원래로 돌아갑니다.
+            그런데 혼자 남겨지면, 다시 원래로 돌아가곤 합니다.
           </p>
           <blockquote class="story-quote">
             "왜 이 변화는 지속되지 않을까?"<br>
@@ -688,7 +689,7 @@
           <p class="story-text">
             미래의 내가 오늘의 나와 함께 있다면 어떨까요?<br>
             항상 곁에 있는 나다운 나침반.<br>
-            그게 The Pulse입니다.
+            The Pulse를 소개합니다.
           </p>
         </div>
       </div>
@@ -821,7 +822,7 @@
       </div>
 
       <p class="section-label dark fade-up" style="margin-top:72px; margin-bottom:16px;">App Preview</p>
-      <div class="section-title dark fade-up-2" style="margin-bottom:40px;">이렇게 <em>생겼습니다.</em></div>
+      <div class="section-title dark fade-up-2" style="margin-bottom:40px;">안을 <em>들여다보면.</em></div>
       <div class="preview-duo fade-up-3">
         <div class="preview-item">
           <div class="preview-label">MY LAB · 정체성 설계</div>
@@ -830,6 +831,10 @@
         <div class="preview-item">
           <div class="preview-label">CONTRACT · 존재의 계약</div>
           <img src="/assets/screenshots/pulse3.png" alt="미래의 나와 맺는 존재의 계약 화면" class="preview-img" />
+        </div>
+        <div class="preview-item">
+          <div class="preview-label">IDENTITY SYNC · VAK 아키텍처</div>
+          <img src="/assets/screenshots/pulse4.png" alt="정체성 동기화 VAK 아키텍처 화면" class="preview-img" />
         </div>
       </div>
     </div>
@@ -843,7 +848,7 @@
       <div class="faq-list">
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">
-            다른 자기계발 앱이랑 뭐가 다른가요?
+            다른 자기계발 시스템이랑 뭐가 다른가요?
             <span class="faq-arrow">▼</span>
           </button>
           <div class="faq-a">대부분의 앱은 할 일 목록을 관리합니다. 이 시스템은 '나는 어떤 사람인가'에서 시작합니다.</div>
@@ -860,7 +865,7 @@
             이 시스템은 어떤 과학적 근거를 기반으로 하나요?
             <span class="faq-arrow">▼</span>
           </button>
-          <div class="faq-a">TCI(기질 및 성격 검사), VAK(시각·청각·운동감각 학습 유형), 멘탈뱅크(자기효능감 적립 모델)를 핵심 프레임워크로 사용합니다. 각각 신경과학, 인지심리학, 긍정심리학 분야에서 검증된 방법론으로, 이 세 가지를 하나의 일상 루틴으로 통합한 것이 Milestones의 차별점입니다.</div>
+          <div class="faq-a">TCI(기질 및 성격 검사), VAK(시각·청각·운동감각 학습 유형), 멘탈뱅크(자기효능감 적립 모델)를 핵심 프레임워크로 사용합니다. 각각 신경과학, 인지심리학, 긍정심리학 분야에서 검증된 방법론으로, 이 세 가지를 하나의 일상 루틴으로 통합한 것이 차별점입니다.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">
