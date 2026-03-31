@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Milestones.today — 지금의 당신은 지속 가능한 상태입니까?</title>
   <meta name="description" content="이미 목표를 이룬 내가, 오늘의 나를 이끈다면 어떨까요? 미래의 나와 함께하는 자기 설계 시스템, The Pulse." />
+  <!-- GA4: G-XXXXXXXXXX 자리에 실제 측정 ID 입력 -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script> -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
   <style>
@@ -209,7 +217,7 @@
     .email-input {
       flex: 1; padding: 15px 18px;
       border: 1.5px solid var(--border); border-radius: 14px;
-      font-family: inherit; font-size: 0.875rem; color: var(--text);
+      font-family: inherit; font-size: 16px; color: var(--text);
       background: var(--bg); outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
@@ -302,6 +310,26 @@
     .wv-num { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; color: #fbbf24; margin-bottom: 16px; }
     .wv-title { font-size: 1.1rem; font-weight: 900; font-style: italic; text-transform: uppercase; color: #fff; margin-bottom: 12px; letter-spacing: -0.02em; }
     .wv-desc { font-size: 0.82rem; color: #94a3b8; line-height: 1.75; }
+    /* ── 세계관 압축 ── */
+    .worldview-core { margin-top: 48px; max-width: 680px; }
+    .worldview-core-point {
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      font-weight: 900; font-style: italic; text-transform: uppercase;
+      letter-spacing: -0.03em; color: #fbbf24; margin-bottom: 20px; line-height: 1.15;
+    }
+    .worldview-core-desc { font-size: 0.95rem; color: #94a3b8; line-height: 1.85; }
+    .worldview-support {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px; margin-top: 48px; padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .worldview-support-item { padding: 0 8px; }
+    .ws-title {
+      font-size: 0.82rem; font-weight: 800; color: #e2e8f0;
+      margin-bottom: 8px; letter-spacing: -0.01em;
+    }
+    .ws-desc { font-size: 0.8rem; color: #64748b; line-height: 1.75; }
+
     /* ── 문제 섹션 ── */
     .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 48px; }
     .problem-card {
@@ -315,6 +343,19 @@
     .problem-num { font-size: 2.8rem; font-weight: 900; font-style: italic; color: #fde68a; letter-spacing: -0.05em; margin-bottom: 10px; line-height: 1; }
     .problem-title { font-size: 0.95rem; font-weight: 800; color: var(--text); margin-bottom: 10px; }
     .problem-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ── 문제 리스트 ── */
+    .problem-list { display: flex; flex-direction: column; gap: 20px; margin-top: 48px; max-width: 640px; }
+    .problem-list-item { display: flex; gap: 16px; align-items: flex-start; }
+    .problem-x { font-size: 1.1rem; color: #fca5a5; font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+    .problem-bridge {
+      margin: 44px 0;
+      font-size: 0.95rem; font-weight: 800; color: var(--amber);
+      letter-spacing: -0.01em;
+      padding: 18px 24px;
+      background: var(--amber-pale); border: 1px solid rgba(217,119,6,0.2);
+      border-radius: 14px; display: inline-block;
+    }
 
     /* ── How it works ── */
     .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0; margin-top: 60px; position: relative; }
@@ -389,6 +430,20 @@
     .footer-links a { font-size: 0.72rem; color: var(--text-faint); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
     .footer-links a:hover { color: var(--text); }
     .footer-copy { font-size: 0.68rem; color: var(--text-faint); }
+
+    /* ── 앱 미리보기 듀오 ── */
+    .preview-duo {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 20px; max-width: 720px; margin: 0 auto;
+    }
+    @media (max-width: 640px) { .preview-duo { grid-template-columns: 1fr; } }
+
+    /* ── 다크 feature-card ── */
+    .feature-card-dark {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.1);
+    }
+    .feature-card-dark:hover { border-color: rgba(245,158,11,0.4); background: rgba(255,255,255,0.07); }
 
     /* ── 앱 미리보기 ── */
     .preview-grid {
@@ -542,8 +597,8 @@
     <div class="inner">
       <div class="logo">Milestones<em>.today</em></div>
       <div class="nav-links">
+        <a href="#story" class="nav-link">스토리</a>
         <a href="#worldview" class="nav-link">시스템</a>
-        <a href="#features" class="nav-link">기능</a>
         <a href="#faq" class="nav-link">FAQ</a>
         <a href="/app" class="nav-cta">로그인 →</a>
       </div>
@@ -574,15 +629,16 @@
 
       <div class="badge fade-up-5">
         <span class="badge-dot"></span>
-        Early Access — Coming Soon
+        Early Access · Q2 2026 런칭 · 지금 신청하면 프리미엄 무료
       </div>
 
       <div class="form-wrap fade-up-5" id="form-area-hero">
         <form onsubmit="handleSubmit(event,'form-area-hero')">
+          <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off" />
           <div class="form-row">
             <input type="text" class="email-input" name="name" placeholder="이름" required autocomplete="name" style="max-width:140px;" />
             <input type="email" class="email-input" name="email" placeholder="이메일 주소" required autocomplete="email" />
-            <button type="submit" class="submit-btn">첫 번째 신호 받기 →</button>
+            <button type="submit" class="submit-btn">얼리 액세스 신청 →</button>
           </div>
           <p class="error-msg" style="display:none;"></p>
           <p class="form-note">확인 이메일이 오지 않으면 스팸함을 확인해주세요</p>
@@ -607,246 +663,12 @@
     </div>
   </section>
 
-  <!-- ② Core Worldview (다크) -->
-  <section class="section section-dark" id="worldview">
-    <div class="container">
-      <p class="section-label dark fade-up">왜 이 방법은 다른가</p>
-      <div class="section-title dark fade-up-2">세 가지 <em>철학.</em></div>
-      <p class="section-desc dark fade-up-3" style="margin-bottom:48px;">복잡하지 않습니다. 단지, 순서가 달랐을 뿐이에요.</p>
-      <div class="worldview-grid">
-        <div class="worldview-card fade-up">
-          <div class="wv-num">01</div>
-          <div class="wv-title">목표가 아니라, 정체성부터</div>
-          <div class="wv-desc">"살 빼야지"가 아니라 "건강한 사람으로 산다"는 정체성이 먼저 바뀔 때, 행동이 저절로 따라옵니다. 뇌과학이 증명한 순서입니다.</div>
-        </div>
-        <div class="worldview-card fade-up-2">
-          <div class="wv-num">02</div>
-          <div class="wv-title">미래의 내가 오늘을 설계한다</div>
-          <div class="wv-desc">이미 원하는 삶을 살고 있는 나라면, 오늘 어떤 선택을 할까요? 그 질문 하나가 하루를 바꿉니다.</div>
-        </div>
-        <div class="worldview-card fade-up-3">
-          <div class="wv-num">03</div>
-          <div class="wv-title">측정하면 달라집니다</div>
-          <div class="wv-desc">막연한 다짐이 아니라, 작은 신호들을 매일 기록하는 것. 그게 실제로 뇌를 다시 연결합니다.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ③ 문제 제기 -->
-  <section class="section section-soft">
-    <div class="container">
-      <p class="section-label fade-up">The Problem</p>
-      <div class="section-title fade-up-2">원하는 삶은 그려지는데,<br><em>오늘이 달라지지 않는다면.</em></div>
-      <p class="section-desc fade-up-3">엔진은 있었어요. 연결이 안 됐던 거죠.</p>
-      <div class="problem-grid">
-        <div class="problem-card fade-up">
-          <div class="problem-num">01</div>
-          <div class="problem-title">목표가 내 것이 아니었을 수 있어요</div>
-          <div class="problem-desc">누군가의 성공 방식, 사회가 좋다는 기준. 마음 깊이 울리지 않는 목표는 움직임으로 이어지기 어렵습니다.</div>
-        </div>
-        <div class="problem-card fade-up-2">
-          <div class="problem-num">02</div>
-          <div class="problem-title">나에게 맞는 방식이 따로 있습니다</div>
-          <div class="problem-desc">보는 것에 반응하는 사람이 있고, 직접 해봐야 느껴지는 사람이 있어요. 방식이 맞지 않으면 아무리 노력해도 공회전합니다.</div>
-        </div>
-        <div class="problem-card fade-up-3">
-          <div class="problem-num">03</div>
-          <div class="problem-title">구조가 없으면 감각만으로는 부족합니다</div>
-          <div class="problem-desc">하고 싶은 마음은 충분해도 언제, 어떻게, 얼마나 — 라는 틀이 없으면 에너지가 방향을 잃습니다.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ④ 작동 방식 -->
-  <section class="section">
-    <div class="container" style="text-align:center;">
-      <p class="section-label fade-up">How It Works</p>
-      <div class="section-title fade-up-2">딱 세단계 <em>입니다.</em></div>
-      <div class="steps">
-        <div class="step fade-up">
-          <div class="step-num">1</div>
-          <div class="step-title">나를 먼저 이해합니다</div>
-          <div class="step-desc">내가 어떤 방식으로 동기를 얻는지, 무엇을 볼 때 살아있다는 느낌이 드는지. 이걸 아는 것부터 시작합니다.</div>
-        </div>
-        <div class="step fade-up-2">
-          <div class="step-num">2</div>
-          <div class="step-title">미래의 나를 불러옵니다</div>
-          <div class="step-desc">원하는 삶을 이미 살고 있는 나는 어떤 사람인지 구체적으로 그립니다. 이름도 붙이고, 하루 일과도 씁니다. 뇌는 이 과정에서 이미 변하기 시작합니다.</div>
-        </div>
-        <div class="step fade-up-3">
-          <div class="step-num">3</div>
-          <div class="step-title">오늘을 그 사람으로 삽니다</div>
-          <div class="step-desc">미래의 내가 오늘 아침 일어나서 뭘 할지. 그 작은 선택들을 매일 기록하고 쌓아갑니다.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ⑤ 인용구 (다크) -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="quote-inner">
-        <div class="quote-text">
-          지금의 나와 미래의 나,<br><em>그 사이에 오늘이 있습니다.</em>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ⑥ 피처 -->
-  <section class="section section-soft" id="features">
-    <div class="container">
-      <p class="section-label fade-up">Features</p>
-      <div class="section-title fade-up-2">6개의 도구, <em>하나의 방향.</em></div>
-      <div class="features-grid">
-        <div class="feature-card fade-up">
-          <div class="feature-num">01</div>
-          <div class="feature-kw-row">
-            <span class="feature-keyword">FEEL</span>
-            <div class="feature-hanja-wrap">
-              <div class="feature-hanja">感</div>
-              <span class="feature-hanja-meaning">감</span>
-            </div>
-          </div>
-          <div class="feature-divider"></div>
-          <div class="feature-title">나는 어떤 방식으로 배우는가</div>
-          <div class="feature-desc">보는 것에 반응하는지, 듣는 것인지, 직접 해봐야 하는지. 내 방식을 알면 모든 게 쉬워집니다.</div>
-        </div>
-        <div class="feature-card fade-up-2">
-          <div class="feature-num">02</div>
-          <div class="feature-kw-row">
-            <span class="feature-keyword">KNOW</span>
-            <div class="feature-hanja-wrap">
-              <div class="feature-hanja">性</div>
-              <span class="feature-hanja-meaning">성</span>
-            </div>
-          </div>
-          <div class="feature-divider"></div>
-          <div class="feature-title">내 성격의 본성</div>
-          <div class="feature-desc">왜 나는 이런 패턴을 반복하는지, 과학적으로 이해하는 지도입니다.</div>
-        </div>
-        <div class="feature-card fade-up-3">
-          <div class="feature-num">03</div>
-          <div class="feature-kw-row">
-            <span class="feature-keyword">WANT</span>
-            <div class="feature-hanja-wrap">
-              <div class="feature-hanja">望</div>
-              <span class="feature-hanja-meaning">망</span>
-            </div>
-          </div>
-          <div class="feature-divider"></div>
-          <div class="feature-title">지금 내게 진짜 필요한 것</div>
-          <div class="feature-desc">안정인지, 소속감인지, 성취인지. 단계를 알면 방향이 생깁니다.</div>
-        </div>
-        <div class="feature-card fade-up">
-          <div class="feature-num">04</div>
-          <div class="feature-kw-row">
-            <span class="feature-keyword">BIND</span>
-            <div class="feature-hanja-wrap">
-              <div class="feature-hanja">結</div>
-              <span class="feature-hanja-meaning">결</span>
-            </div>
-          </div>
-          <div class="feature-divider"></div>
-          <div class="feature-title">나와의 약속, 계약으로</div>
-          <div class="feature-desc">다짐은 약해집니다. 계약은 남습니다. 미래의 나와 오늘의 내가 서명하는 구조입니다.</div>
-        </div>
-        <div class="feature-card fade-up-2">
-          <div class="feature-num">05</div>
-          <div class="feature-kw-row">
-            <span class="feature-keyword">BUILD</span>
-            <div class="feature-hanja-wrap">
-              <div class="feature-hanja">蓄</div>
-              <span class="feature-hanja-meaning">축</span>
-            </div>
-          </div>
-          <div class="feature-divider"></div>
-          <div class="feature-title">마음 통장</div>
-          <div class="feature-desc">작은 실천을 매일 적립합니다. 눈에 보이지 않던 성장이 숫자로 쌓입니다.</div>
-        </div>
-        <div class="feature-card fade-up-3">
-          <div class="feature-num">06</div>
-          <div class="feature-kw-row">
-            <span class="feature-keyword">BE</span>
-            <div class="feature-hanja-wrap">
-              <div class="feature-hanja">我</div>
-              <span class="feature-hanja-meaning">아</span>
-            </div>
-          </div>
-          <div class="feature-divider"></div>
-          <div class="feature-title">미래의 나, 설계하기</div>
-          <div class="feature-desc">이름, 하루 루틴, 말투까지. 막연한 꿈이 아닌 구체적인 사람으로 만듭니다.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ⑦ 앱 미리보기 -->
-  <section class="section section-dark">
-    <div class="container">
-      <p class="section-label dark fade-up">App Preview</p>
-      <div class="section-title dark fade-up-2">이렇게 하루를 <em>만들어 나갑니다.</em></div>
-      <p class="section-desc dark fade-up-3" style="margin-bottom:52px;">매일 아침, 미래의 내가 오늘의 선택을 안내합니다.</p>
-
-      <div class="preview-grid fade-up-3">
-
-        <div class="preview-item">
-          <div class="preview-label">LEDGER · 메인 대시보드</div>
-          <img src="/assets/screenshots/pulse1-1.png" alt="The Pulse 메인 대시보드" class="preview-img" />
-        </div>
-
-        <div class="preview-item">
-          <div class="preview-label">BPS · 성장 피라미드</div>
-          <img src="/assets/screenshots/pulse1-2.png" alt="BPS 피라미드" class="preview-img" />
-        </div>
-
-        <div class="preview-item">
-          <div class="preview-label">LEDGER · 가치 활동</div>
-          <img src="/assets/screenshots/pulse1-3.png" alt="가치 활동 로그" class="preview-img" />
-        </div>
-
-        <div class="preview-item">
-          <div class="preview-label">MY LAB · 정체성 설계</div>
-          <img src="/assets/screenshots/pulse2.png" alt="My Lab 정체성 설계" class="preview-img" />
-        </div>
-
-        <div class="preview-item">
-          <div class="preview-label">CONTRACT · 존재의 계약</div>
-          <img src="/assets/screenshots/pulse3.png" alt="Manifestation Contract" class="preview-img" />
-        </div>
-
-        <div class="preview-item">
-          <div class="preview-label">IDENTITY SYNC · VAK 아키텍처</div>
-          <img src="/assets/screenshots/pulse4.png" alt="Identity Sync Chamber" class="preview-img" />
-        </div>
-
-        <div class="preview-item">
-          <div class="preview-label">APEX STREAM · 성장 궤적</div>
-          <img src="/assets/screenshots/pulse5.png" alt="Apex Stream 성장 차트" class="preview-img" />
-        </div>
-
-        <div class="preview-item">
-          <div class="preview-label">ACTIVITY TIMELINE · 활동 로그</div>
-          <img src="/assets/screenshots/pulse6.png" alt="Activity Timeline" class="preview-img" />
-        </div>
-
-        <div class="preview-item">
-          <div class="preview-label">PHILOSOPHY · 시스템 선언</div>
-          <img src="/assets/screenshots/pulse7.png" alt="System Manifesto" class="preview-img" />
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ⑧ 만든 사람 이야기 -->
-  <section class="section">
+  <!-- ② 만든 사람 이야기 -->
+  <section class="section" id="story">
     <div class="container">
       <div class="story-wrap fade-up">
         <div class="story-left">
-          <p class="section-label">The Story</p>
+          <p class="section-label">The Origin</p>
           <div class="section-title">나 자신을 위해<br><em>만들었습니다.</em></div>
           <p class="story-tagline">그래서 당신에게도 작동합니다.</p>
         </div>
@@ -873,6 +695,146 @@
     </div>
   </section>
 
+  <!-- ③ Core Worldview (다크) -->
+  <section class="section section-dark" id="worldview">
+    <div class="container">
+      <p class="section-label dark fade-up">Why This Works</p>
+      <div class="section-title dark fade-up-2">순서가 달랐을<br><em>뿐입니다.</em></div>
+      <div class="worldview-core fade-up-3">
+        <div class="worldview-core-point">목표보다 정체성이 먼저입니다.</div>
+        <p class="worldview-core-desc">"살 빼야지 결심하는 사람"이 아니라 "건강하고 탄력있는 사람"으로 정체성이 먼저 바뀔 때, 행동이 저절로 따라옵니다. 그 정체성을 만드는 사람은 5년 뒤의 당신입니다.</p>
+      </div>
+      <div class="worldview-support fade-up-4">
+        <div class="worldview-support-item">
+          <div class="ws-title">미래의 내가 오늘을 설계한다</div>
+          <div class="ws-desc">이미 원하는 삶을 살고 있는 나라면, 오늘 어떤 선택을 할까요?</div>
+        </div>
+        <div class="worldview-support-item">
+          <div class="ws-title">측정하면 달라집니다</div>
+          <div class="ws-desc">작은 신호들을 매일 기록하는 것. 그 기록이 실제로 뇌의 회로를 다시 씁니다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ 문제 + 작동 방식 통합 -->
+  <section class="section section-soft">
+    <div class="container">
+      <p class="section-label fade-up">The Problem → The Solution</p>
+      <div class="section-title fade-up-2">원하는 삶은 그려지는데,<br><em>오늘이 달라지지 않는다면.</em></div>
+      <p class="section-desc fade-up-3">엔진은 있었어요. 연결이 안 됐던 거죠.</p>
+
+      <div class="problem-list fade-up-3">
+        <div class="problem-list-item">
+          <span class="problem-x">✗</span>
+          <div>
+            <div class="problem-title">목표가 내 것이 아니었을 수 있어요</div>
+            <div class="problem-desc">누군가의 성공 방식, 사회가 좋다는 기준. 마음 깊이 울리지 않는 목표는 움직임으로 이어지기 어렵습니다.</div>
+          </div>
+        </div>
+        <div class="problem-list-item">
+          <span class="problem-x">✗</span>
+          <div>
+            <div class="problem-title">나에게 맞는 방식이 따로 있습니다</div>
+            <div class="problem-desc">보는 것에 반응하는 사람이 있고, 직접 해봐야 느껴지는 사람이 있어요. 방식이 맞지 않으면 아무리 노력해도 공회전합니다.</div>
+          </div>
+        </div>
+        <div class="problem-list-item">
+          <span class="problem-x">✗</span>
+          <div>
+            <div class="problem-title">구조가 없으면 감각만으로는 부족합니다</div>
+            <div class="problem-desc">하고 싶은 마음은 충분해도 언제, 어떻게, 얼마나 — 라는 틀이 없으면 에너지가 방향을 잃습니다.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-bridge fade-up-4">
+        Milestones는 이 세 가지를 순서대로 해결합니다.
+      </div>
+
+      <div class="steps fade-up-4">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-title">나를 먼저 이해합니다</div>
+          <div class="step-desc">내가 어떤 방식으로 동기를 얻는지, 무엇을 볼 때 살아있다는 느낌이 드는지. 이걸 아는 것부터 시작합니다.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-title">미래의 나를 불러옵니다</div>
+          <div class="step-desc">원하는 삶을 이미 살고 있는 나는 어떤 사람인지 구체적으로 그립니다. 이름도 붙이고, 하루 일과도 씁니다.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-title">오늘을 그 사람으로 삽니다</div>
+          <div class="step-desc">미래의 내가 오늘 아침 일어나서 뭘 할지. 그 작은 선택들을 매일 기록하고 쌓아갑니다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑥ 피처 + 앱 미리보기 -->
+  <section class="section section-dark" id="features">
+    <div class="container">
+      <p class="section-label dark fade-up">Inside the System</p>
+      <div class="section-title dark fade-up-2">6개의 도구, <em>하나의 방향.</em></div>
+      <p class="section-desc dark fade-up-3" style="margin-bottom:52px;">전부 쓸 필요는 없습니다. 오늘 나에게 필요한 것 하나면 충분합니다.</p>
+      <div class="features-grid">
+        <div class="feature-card feature-card-dark fade-up">
+          <div class="feature-num" style="color:#fbbf24;">04</div>
+          <div class="feature-kw-row">
+            <span class="feature-keyword">BIND</span>
+            <div class="feature-hanja-wrap">
+              <div class="feature-hanja">結</div>
+              <span class="feature-hanja-meaning">결</span>
+            </div>
+          </div>
+          <div class="feature-divider" style="background:rgba(255,255,255,0.1);"></div>
+          <div class="feature-title" style="color:#f1f5f9;">나와의 약속, 계약으로</div>
+          <div class="feature-desc" style="color:#94a3b8;">다짐은 약해집니다. 계약은 남습니다. 미래의 나와 오늘의 내가 서명하는 구조입니다.</div>
+        </div>
+        <div class="feature-card feature-card-dark fade-up-2">
+          <div class="feature-num" style="color:#fbbf24;">05</div>
+          <div class="feature-kw-row">
+            <span class="feature-keyword">BUILD</span>
+            <div class="feature-hanja-wrap">
+              <div class="feature-hanja">蓄</div>
+              <span class="feature-hanja-meaning">축</span>
+            </div>
+          </div>
+          <div class="feature-divider" style="background:rgba(255,255,255,0.1);"></div>
+          <div class="feature-title" style="color:#f1f5f9;">마음 통장</div>
+          <div class="feature-desc" style="color:#94a3b8;">작은 실천을 매일 적립합니다. 눈에 보이지 않던 성장이 숫자로 쌓입니다.</div>
+        </div>
+        <div class="feature-card feature-card-dark fade-up-3">
+          <div class="feature-num" style="color:#fbbf24;">06</div>
+          <div class="feature-kw-row">
+            <span class="feature-keyword">BE</span>
+            <div class="feature-hanja-wrap">
+              <div class="feature-hanja">我</div>
+              <span class="feature-hanja-meaning">아</span>
+            </div>
+          </div>
+          <div class="feature-divider" style="background:rgba(255,255,255,0.1);"></div>
+          <div class="feature-title" style="color:#f1f5f9;">미래의 나, 설계하기</div>
+          <div class="feature-desc" style="color:#94a3b8;">이름, 하루 루틴, 말투까지. 막연한 꿈이 아닌 구체적인 사람으로 만듭니다.</div>
+        </div>
+      </div>
+
+      <p class="section-label dark fade-up" style="margin-top:72px; margin-bottom:16px;">App Preview</p>
+      <div class="section-title dark fade-up-2" style="margin-bottom:40px;">이렇게 <em>생겼습니다.</em></div>
+      <div class="preview-duo fade-up-3">
+        <div class="preview-item">
+          <div class="preview-label">MY LAB · 정체성 설계</div>
+          <img src="/assets/screenshots/pulse2.png" alt="My Lab 정체성 설계 화면" class="preview-img" />
+        </div>
+        <div class="preview-item">
+          <div class="preview-label">CONTRACT · 존재의 계약</div>
+          <img src="/assets/screenshots/pulse3.png" alt="미래의 나와 맺는 존재의 계약 화면" class="preview-img" />
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ⑨ FAQ -->
   <section class="section" id="faq">
     <div class="container" style="text-align:center;">
@@ -881,10 +843,24 @@
       <div class="faq-list">
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">
+            다른 자기계발 앱이랑 뭐가 다른가요?
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-a">대부분의 앱은 할 일 목록을 관리합니다. 이 시스템은 '나는 어떤 사람인가'에서 시작합니다.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
             얼리 액세스는 무료인가요?
             <span class="faq-arrow">▼</span>
           </button>
           <div class="faq-a">네, 완전 무료입니다. 런칭 후에도 기본 기능은 무료로 제공되며, 얼리 액세스 신청자에게는 프리미엄 기능을 우선 무료로 제공할 계획입니다.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            이 시스템은 어떤 과학적 근거를 기반으로 하나요?
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-a">TCI(기질 및 성격 검사), VAK(시각·청각·운동감각 학습 유형), 멘탈뱅크(자기효능감 적립 모델)를 핵심 프레임워크로 사용합니다. 각각 신경과학, 인지심리학, 긍정심리학 분야에서 검증된 방법론으로, 이 세 가지를 하나의 일상 루틴으로 통합한 것이 Milestones의 차별점입니다.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">
@@ -900,41 +876,6 @@
           </button>
           <div class="faq-a">2026년 2분기(Q2) 런칭을 목표로 개발 중입니다. 신청해주신 이메일로 런칭 소식을 가장 먼저 전달해드립니다.</div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            어떤 기기에서 사용할 수 있나요?
-            <span class="faq-arrow">▼</span>
-          </button>
-          <div class="faq-a">웹 기반 앱으로 스마트폰·태블릿·PC 모두에서 사용 가능합니다. 별도 앱 설치 없이 브라우저에서 바로 접속하세요.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            이메일을 등록하면 어떤 메일을 받게 되나요?
-            <span class="faq-arrow">▼</span>
-          </button>
-          <div class="faq-a">등록 즉시 확인 이메일 1통이 발송됩니다. 이후 런칭 소식과 업데이트 알림만 드립니다. 이메일이 도착하지 않으면 스팸함을 확인해주세요. 언제든지 이메일 하단의 수신 거부 링크로 구독을 취소하실 수 있습니다.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            심리 전문 지식이 없어도 쓸 수 있나요?
-            <span class="faq-arrow">▼</span>
-          </button>
-          <div class="faq-a">네. 이 시스템은 전문 용어 없이, 일상 언어로 시작합니다. 처음엔 질문 하나에 대답하는 것부터입니다.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            시간이 많이 걸리나요?
-            <span class="faq-arrow">▼</span>
-          </button>
-          <div class="faq-a">하루 10분이면 충분합니다. 길게 쓰는 것보다 매일 짧게 기록하는 것이 훨씬 효과적입니다.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            다른 자기계발 앱이랑 뭐가 다른가요?
-            <span class="faq-arrow">▼</span>
-          </button>
-          <div class="faq-a">대부분의 앱은 할 일 목록을 관리합니다. 이 시스템은 '나는 어떤 사람인가'에서 시작합니다.</div>
-        </div>
       </div>
     </div>
   </section>
@@ -944,18 +885,19 @@
     <div class="container">
       <p class="section-label fade-up" style="text-align:center;">Join the Waitlist</p>
       <div class="cta-title fade-up-2">
-        지금, 첫 번째<br><em>신호를 받으세요.</em>
+        지금, 첫 번째로<br><em>시작하세요.</em>
       </div>
-      <p class="cta-desc fade-up-3">등록하신 분께 무료 전자책을 드립니다. 준비되면 가장 먼저 알려드릴게요.</p>
+      <p class="cta-desc fade-up-3">Q2 2026 런칭 시 가장 먼저 알려드립니다. 얼리 액세스는 프리미엄 기능 무료 제공.</p>
       <div class="form-wrap fade-up-4" id="form-area-bottom">
         <form onsubmit="handleSubmit(event,'form-area-bottom')">
+          <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off" />
           <div class="form-row">
             <input type="text" class="email-input" name="name" placeholder="이름" required autocomplete="name" style="max-width:140px;" />
             <input type="email" class="email-input" name="email" placeholder="이메일 주소" required autocomplete="email" />
-            <button type="submit" class="submit-btn">신호 받기 →</button>
+            <button type="submit" class="submit-btn">얼리 액세스 신청 →</button>
           </div>
           <p class="error-msg" style="display:none;"></p>
-          <p class="form-note">언제든 구독 취소 가능 · 스팸 없음</p>
+          <p class="form-note">하루 10분 · 언제든 구독 취소 가능 · 스팸 없음</p>
         </form>
         <p class="beta-link fade-up-5">지금 바로 써보고 싶으신가요? <a href="https://forms.gle/g4X2NWB8hAefhuAu5" target="_blank" class="beta-link-a">베타 참여 신청 →</a></p>
       </div>
@@ -983,6 +925,8 @@
     async function handleSubmit(e, areaId) {
       e.preventDefault();
       const form = e.target;
+      const honeypot = form.querySelector('input[name="website"]');
+      if (honeypot && honeypot.value) return;
       const name = form.querySelector('input[name="name"]').value.trim();
       const email = form.querySelector('input[name="email"]').value.trim();
       const btn = form.querySelector('.submit-btn');
@@ -991,6 +935,7 @@
       btn.disabled = true; btn.textContent = "..."; errMsg.style.display = "none";
       try {
         await fetch(GAS_URL, { method:"POST", mode:"no-cors", headers:{"Content-Type":"application/json"}, body: JSON.stringify({name, email}) });
+        if (typeof gtag !== 'undefined') gtag('event', 'sign_up', { method: 'email_form' });
         showSuccess(areaId, name, email);
       } catch {
         errMsg.textContent = "오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
