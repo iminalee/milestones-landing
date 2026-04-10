@@ -7,7 +7,7 @@
   <meta name="description" content="정체성 기반 습관 형성 연구 프로젝트 The Pulse. 1차 연구 참여자를 모집합니다." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -15,8 +15,13 @@
       scroll-behavior: smooth;
     }
 
+    @keyframes shimmerText {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
+
     body {
-      background: #0a0a0a;
+      background: #08101e;
       color: #ffffff;
       font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
       font-size: 1rem;
@@ -48,7 +53,7 @@
     /* ── 헤드라인 ── */
     h1 {
       font-family: 'Noto Serif KR', serif;
-      font-weight: 900;
+      font-weight: 700;
       font-size: clamp(2.4rem, 6vw, 3.8rem);
       line-height: 1.15;
       letter-spacing: -0.02em;
@@ -57,7 +62,13 @@
     }
 
     h1 .accent {
-      color: #FF8C42;
+      font-style: italic;
+      background: linear-gradient(120deg, #fbbf24 0%, #f59e0b 40%, #d97706 80%, #fbbf24 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmerText 4s linear infinite;
     }
 
     /* ── 서브카피 ── */
